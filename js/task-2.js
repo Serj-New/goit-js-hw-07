@@ -32,16 +32,7 @@ const images = [
 
 const gallery = document.querySelector('.gallery');
 
-
-function createGallery () {
-  const markup = images
-  .map(img => {
-    return `<li class="gallery-item"><img src="${img.url}" alt="${img.alt}"/></li>`;
-  })
-  .join('');
-
-  return markup;
-}
+const createGallery = () => images.map(img => `<li class="gallery-item"><img src="${img.url}" alt="${img.alt}"/></li>`).join('');
 
 const markup = createGallery();
 gallery.insertAdjacentHTML('afterbegin', markup);

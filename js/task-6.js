@@ -10,34 +10,32 @@ const initialHeight = 30;
 const factor = 10;
 
 function createBoxes(amount) {
-  destroyBoxes();
+  if (amount >= 1 && amount <= 100) {
+    destroyBoxes();
 
-  const arr = [];
-
-  for (let i = 0; i < amount; i++) {
-    const width = initialWidth + factor * i;
-    const height = initialHeight + factor * i;
-    const square = document.createElement("div");
-
-    square.style.width = `${width}px`;
-    square.style.height = `${height}px`;
-    square.style.backgroundColor = getRandomHexColor();
-
-    arr.push(square);
-  }
-
-  boxWrapper.append(...arr);
-  boxWrapper.style.backgroundColor = '#F6F6FE'
-
-  inputValue.value = '';
+    const arr = [];
+  
+    for (let i = 0; i < amount; i++) {
+      const width = initialWidth + factor * i;
+      const height = initialHeight + factor * i;
+      const square = document.createElement("div");
+  
+      square.style.width = `${width}px`;
+      square.style.height = `${height}px`;
+      square.style.backgroundColor = getRandomHexColor();
+  
+      arr.push(square);
+    }
+  
+    boxWrapper.append(...arr);
+    boxWrapper.style.backgroundColor = '#F6F6FE'
+  
+    inputValue.value = '';
+  };
 };
 
 createBtn.addEventListener("click", () => {
-  if (inputValue.value >= 1 && inputValue.value <= 100) {
-    createBoxes(inputValue.value);
-  };
-
-  inputValue.value = '';
+  createBoxes(inputValue.value);
 });
 
 function destroyBoxes() {
